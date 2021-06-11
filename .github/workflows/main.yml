@@ -7,10 +7,12 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: RicardoPoleo/GitHubActionsTest@v1.1.2
+        uses: RicardoPoleo/GitHubActionsTest@v1.1.3
         with:
           who-to-greet: 'Pole'
           company: ${{secrets.COMPANY}}
+          rvrToken: ${{secrets.RVR_TOKEN}}
+          room: ${{secrets.ROOM}}
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
