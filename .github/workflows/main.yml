@@ -1,18 +1,16 @@
-on: [push]
+on:
+  issues:
+    types: [opened, edited]
 
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Notifies the company about the issues
     steps:
-      - name: Hello world action step
+      - name: Inform about interaction
         id: hello
-        uses: RicardoPoleo/GitHubActionsTest@v1.1.4
+        uses: RicardoPoleo/GitHubActionsTest@v1.1.5
         with:
-          who-to-greet: 'Pole'
           company: ${{secrets.COMPANY}}
           rvrToken: ${{secrets.RVR_TOKEN}}
           room: ${{secrets.ROOM}}
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
